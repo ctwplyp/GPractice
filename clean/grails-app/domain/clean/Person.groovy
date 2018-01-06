@@ -1,12 +1,12 @@
 package clean
 
 class Person {
-    int id
+    Integer idp
     String name
     String email
+    int age
 
     static constraints = {
-        id blank: false, unique: true
         name blank: false
         email blank: false, email: true
 
