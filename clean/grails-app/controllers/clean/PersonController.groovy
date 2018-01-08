@@ -1,5 +1,7 @@
 package clean
 
+import javax.xml.bind.ValidationException
+
 class PersonController {
 
     def index() {
@@ -8,10 +10,21 @@ class PersonController {
     }
     def save() {
         def person = new Person(params)
-        person.save()
-        render "Success!"
+        try {
+            person.save()
+        } catch(ValidationException e) {
+            render "Unsuccessful Save"
+        }
+        render "Successful Save"
+    }
+    def cancel() {
+        render "Action Cancelled"
     }
     def create(){
 
+    }
+    def show(Person person){
+        person = Person.get(1)
+        [person:person]
     }
 }
