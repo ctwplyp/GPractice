@@ -17,14 +17,28 @@ class PersonController {
         }
         render "Successful Save"
     }
+    def update(Person person) {
+        Person.load(person.id).delete()
+            try {
+            def personUpdate = new Person(person)
+            personUpdate.save
+        } catch(ValidationException e) {
+            render "Unsuccessful Update"
+        }
+        render "Successful Update"
+    }
+    def edit(Integer id) {
+        def person =Person.get(id)
+        [person:person]
+    }
     def cancel() {
         render "Action Cancelled"
     }
     def create(){
 
     }
-    def show(Person person){
+   def show(Person person){
         person = Person.get(1)
         [person:person]
-    }
+   }
 }

@@ -16,8 +16,8 @@
 		</ul>
 	</div>
 		<p>Id:		Name:	Email: </p>
-		<g:each in="${persons}" var="person" status="i">
-			<h3>${i+1}.	${person.name}	${person.email}</h3>
+		<g:each in="${persons}" var="person">
+			<p><td><g:link resource="person" action="edit" id="${person.id}">${person.id}.	${person.name}	${person.email}</g:link></td></p>
 		</g:each>
 	</body>
 </html>

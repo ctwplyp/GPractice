@@ -17,7 +17,9 @@
 	</ul>
 </div>
 <p>Id:		Name:	Email: </p>
+	<g:each in ="${persons}" var ="person">
 	<h3>${person.id}.	${person.name}	${person.email}</h3>
+	</g:each>
 </body>
 </html>
 
