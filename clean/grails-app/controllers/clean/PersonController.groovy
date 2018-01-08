@@ -12,6 +12,6 @@ class PersonController {
         render "Success!"
     }
     def create(){
-        
+
     }
 }
