@@ -1,6 +1,7 @@
 package clean
 
 import javax.xml.bind.ValidationException
+import grails.transaction.Transactional
 
 class PersonController {
 
@@ -11,17 +12,20 @@ class PersonController {
     def save() {
         def person = new Person(params)
         try {
-            person.save()
+            person.save(flush:true)
         } catch(ValidationException e) {
             render "Unsuccessful Save"
         }
         render "Successful Save"
     }
     def update(Person person) {
-        Person.load(person.id).delete()
-            try {
-            def personUpdate = new Person(person)
-            personUpdate.save
+        if (person==null){
+            render txt "Unsuccessful Update"
+            return
+        }
+        try {
+            person.save(flush:true)
+
         } catch(ValidationException e) {
             render "Unsuccessful Update"
         }
