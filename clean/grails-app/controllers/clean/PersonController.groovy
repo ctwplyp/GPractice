@@ -32,7 +32,8 @@ class PersonController {
         render "Successful Update"
     }
     def edit(Integer id) {
-        def person =Person.get(id)
+        System.out.print(id)
+        def person = Person.get(id)
         [person:person]
     }
     def cancel() {
@@ -41,8 +42,8 @@ class PersonController {
     def create(){
 
     }
-   def show(Person person){
-        person = Person.get(1)
+   def show(Integer id){
+       def person =Person.get(id)
         [person:person]
    }
 }
