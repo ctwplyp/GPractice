@@ -13,6 +13,7 @@
 	<ul>
 		<li><a class="home" href="${createLink(uri: '/person/index')}"><g:message code="default.home.label"/></a></li>
 		<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+		<li><g:link class="list" resource="person" action="edit" id="${person.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link></li>
 	</ul>
 </div>
 <p>Id:		Name:	Email: </p>
