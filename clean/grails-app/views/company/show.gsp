@@ -23,20 +23,21 @@
 			</g:if>
 			<ol class="property-list company">
 			
-				<g:if test="${companyInstance?.name}">
+				<g:if test="${company?.name}">
 				<li class="fieldcontain">
 					<span id="name-label" class="property-label"><g:message code="company.name.label" default="Name" /></span>
 					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${companyInstance}" field="name"/></span>
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${company}" field="name"/></span>
+					    <span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${company}" field="id"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${companyInstance?.persons}">
+				<g:if test="${company.persons}">
 				<li class="fieldcontain">
 					<span id="persons-label" class="property-label"><g:message code="company.persons.label" default="Persons" /></span>
 					
-						<g:each in="${companyInstance.persons}" var="p">
+						<g:each in="${company.persons}" var="p">
 						<span class="property-value" aria-labelledby="persons-label"><g:link controller="person" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					

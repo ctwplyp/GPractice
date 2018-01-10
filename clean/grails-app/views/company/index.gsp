@@ -24,7 +24,9 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="name" title="${message(code: 'company.name.label', default: 'Name')}" />
+						<g:sortableColumn property="id" title="${message(code: 'company.id.label', default: 'Id')}" />
+						<g:sortableColumn property="name" title="${message(code: 'company.name.label', default: 'Company Name')}" />
+						<g:sortableColumn property="name" title="${message(code: 'person.name.label', default: 'People')}" />
 					
 					</tr>
 				</thead>
@@ -32,7 +34,15 @@
 				<g:each in="${companys}" status="i" var="company">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${company.id}">${fieldValue(bean: company, field: "name")}</g:link></td>
+						<td><g:link action="show" id="${company.id}">${fieldValue(bean: company, field: "id") }</g:link></td>
+						<td>
+							<g:link action="show" id="${company.id}">${fieldValue(bean: company, field: "name") }</g:link>
+						</td>
+						<td>
+							<g:each in="${company.persons}" var ="person">
+								<g:link action="show" id="${person.id} ">${fieldValue(bean: person, field: "name")}</g:link>
+							</g:each>
+						</td>
 					
 					</tr>
 				</g:each>

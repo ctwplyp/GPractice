@@ -11,7 +11,9 @@ class BootStrap {
        // company.add(person2).save()
         //company.add(person3).save()
         def company = new Company(name:"Sample6").save()
-        company.addToPersons(new Person(name:"Sean",email:"sean@gmail.com")).save()
+        company.addToPersons(new Person(name:"Sean",email:"sean@gmail.com")).addToPersons(new Person(name:"Sean4",email:"sean4@gmail.com")).save()
+        def company2 = new Company(name:"Sample7").save()
+        company2.addToPersons(new Person(name:"Sean2",email:"sean2@gmail.com")).addToPersons(new Person(name:"Sean3",email:"sean3@gmail.com")).save()
 
     }
     def destroy = {
