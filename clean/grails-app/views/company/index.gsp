@@ -29,17 +29,17 @@
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${companyInstanceList}" status="i" var="companyInstance">
+				<g:each in="${companys}" status="i" var="company">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${companyInstance.id}">${fieldValue(bean: companyInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" id="${company.id}">${fieldValue(bean: company, field: "name")}</g:link></td>
 					
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${companyInstanceCount ?: 0}" />
+				<g:paginate total="${companyCount ?: 0}" />
 			</div>
 		</div>
 	</body>
