@@ -15,9 +15,9 @@
 		</div>
 	<g:form controller="company" action="save">
 		<label>Company Name: </label>
-		<g:textField name="name"/><br/>
+		<g:textField name="companyName"/><br/>
 		<label>People: </label>
-		<g:select id="person" from="${persons.name}" value="person" name="person" /><br/>
+		<g:select id="person" from="${persons.name}" value="{${persons.id}" name="personName" /><br/>
 		<g:actionSubmit value="Save"/>
 		<g:actionSubmit value="Cancel"/>
 	</g:form>

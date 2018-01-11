@@ -9,11 +9,12 @@ class CompanyController {
         def companys = Company.list()
         [companys:companys]
     }
-    def save(String name, Person person) {
-        def company = new Company(name:name).save(flush:true)
-        company.addToPersons(person).save(flush:true)
+    def save(String companyName, String personName) {
+       // System.out.println()
         try {
-            company.save(flush:true)
+        def company = new Company(name:companyName).save(flush:true)
+            company.addToPersons(new Person(name:personName,email:"sean@gmail.com")).save(flush:true)
+
         } catch(ValidationException e) {
             render "Unsuccessful Save"
         }
