@@ -40,10 +40,9 @@
 						</td>
 						<td>
 							<g:each in="${company.persons}" var ="person">
-								<g:link action="show" id="${person.id} ">${fieldValue(bean: person, field: "name")}</g:link>
+								<g:link controller="person" action="show" id="${person.id} ">${fieldValue(bean: person, field: "name")}</g:link>
 							</g:each>
 						</td>
-					
 					</tr>
 				</g:each>
 				</tbody>

@@ -41,6 +41,7 @@ class PersonController {
     }
     def create(){
 
+
     }
    def show(Integer id){
        def person =Person.get(id)

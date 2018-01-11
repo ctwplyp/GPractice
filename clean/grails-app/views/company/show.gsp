@@ -22,28 +22,25 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list company">
-			
+
 				<g:if test="${company?.name}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="company.name.label" default="Name" /></span>
-					
+					<span id="name-label" class="property-label"><g:message code="company.name.label" default="Name : " /></span>
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${company}" field="name"/></span>
+					<span id="name-label" class="property-label"><g:message code="company.name.label" default="Id : " /></span>
 					    <span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${company}" field="id"/></span>
-					
 				</li>
 				</g:if>
-			
-				<g:if test="${company.persons}">
+				<g:if test="${company?.persons}">
 				<li class="fieldcontain">
-					<span id="persons-label" class="property-label"><g:message code="company.persons.label" default="Persons" /></span>
-					
-						<g:each in="${company.persons}" var="p">
-						<span class="property-value" aria-labelledby="persons-label"><g:link controller="person" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+					<span id="persons-label" class="property-label"><g:message code="company.persons.label" default="People : " /></span>
+						<g:each in="${company.persons}" var="person">
+								<g:link controller="person" action="show" id="${person.id}">${fieldValue(bean: person, field: "name")}</g:link>
 						</g:each>
-					
+
 				</li>
 				</g:if>
-			
+
 			</ol>
 			<g:form url="[resource:companyInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
