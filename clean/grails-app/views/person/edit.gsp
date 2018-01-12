@@ -18,6 +18,8 @@
 	<g:form controller="person" action="update">
 		<label>Id</label>
 		<g:hiddenField name="id" value="${person.id}"/>${person.id}<br/>
+		<label>Company Name</label>
+		<g:hiddenField name="Company Name:" value="${person.company.name}"/>${person.company.name}<br/>
 		<label>Name: </label>
 		<g:textField name="name" value ="${person.name}"/><br/>
 		<label>Email: </label>

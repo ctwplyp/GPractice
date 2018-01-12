@@ -15,9 +15,9 @@
 			<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 		</ul>
 	</div>
-		<p>Id:		Name:	Email: </p>
+		<p>Id:		Name:	Email:	Company: </p>
 		<g:each in="${persons}" var="person">
-			<p><td><g:link resource="person" action="show" id="${person.id}">${person.id}.	${person.name}	${person.email}</g:link></td></p>
+			<p><td><g:link resource="person" action="show" id="${person.id}">${person.id}.	${person.name}	${person.email} ${person.company.name}</g:link></td></p>
 		</g:each>
 	</body>
 </html>

@@ -9,12 +9,10 @@ class CompanyController {
         def companys = Company.list()
         [companys:companys]
     }
-    def save(String companyName, String personName) {
-       // System.out.println()
+    def save(String name) {
         try {
-        def company = new Company(name:companyName).save(flush:true)
-            company.addToPersons(new Person(name:personName,email:"sean@gmail.com")).save(flush:true)
-
+        def company = new Company(name:name).save(flush:true)
+           // company.addToPersons(new Person(name:personName,email:"sean@gmail.com")).save(flush:true)
         } catch(ValidationException e) {
             render "Unsuccessful Save"
         }
@@ -27,6 +25,10 @@ class CompanyController {
     def show(Integer id){
         def company = Company.get(id)
         [company:company]
+    }
+    def edit(){
+        System.out.print(params)
+
     }
 
 }
