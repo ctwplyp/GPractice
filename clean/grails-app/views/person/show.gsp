@@ -16,7 +16,8 @@
 		<li><g:link class="list" resource="person" action="edit" id="${person.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link></li>
 	</ul>
 </div>
-<p>Id:		Name:	Email: </p>
-	<p><td><g:link resource="person" action="edit" id="${person.id}">${person.id}.	${person.name}	${person.email}</g:link></td></p>
+<p>Id:		Name:	Email: 	Company:</p>
+	<p><td><g:link resource="person" action="edit" id="${person.id}">${person.id}.	${person.name}	${person.email}		${person.company.name}</g:link></td></p>
+
 </body>
 </html>

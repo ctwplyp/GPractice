@@ -6,6 +6,7 @@ import groovy.transform.EqualsAndHashCode
 class Person {
     String name
     String email
+    static belongsTo= [company:Company]
 
     static constraints = {
         name blank: false

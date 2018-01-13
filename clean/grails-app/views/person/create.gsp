@@ -18,6 +18,7 @@
 	<g:textField name="name"/><br/>
 	<label>Email: </label>
 	<g:textField name="email"/><br/>
+	<g:select id="company.id" from="${companys}" value="${companys.name}" name="companyId" /><br/>
 	<g:actionSubmit value="Save"/>
 	<g:actionSubmit value="Cancel"/>
 </g:form>
