@@ -2,26 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Toggle extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {isToggleOn: true};
+class LoggingButton extends React.Component {
+  // This syntax ensures `this` is bound within handleClick.
+  // Warning: this is *experimental* syntax.
+  handleClick = () => {
+    console.log('this is:', this);
+  }
 
-		this.handleClick = this.handleClick.bind(this);
-	}
-
-	handleClick() {
-		this.setState(prevState => ({ isToggleOn: !prevState.isToggleOn}));
-	}
-	render() {
-		return (
-			<button onClick={this.handleClick}>
-				{this.state.isToggleOn ? 'ON' : 'OFF'}
-			</button>
-			);
-		}
-	}
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        Click me
+      </button>
+    );
+  }
+}
 	ReactDOM.render(
-    	<Toggle />,
+    	<LoggingButton />,
     	document.getElementById('root')
 	);
