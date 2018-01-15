@@ -5,13 +5,13 @@ import './index.css';
 class LoggingButton extends React.Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.
-  handleClick = () => {
+  handleClick() {
     console.log('this is:', this);
   }
 
   render() {
     return (
-      <button onClick={this.handleClick}>
+      <button onClick={(e) => this.handleClick(e)}>
         Click me
       </button>
     );
