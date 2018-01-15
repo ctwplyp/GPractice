@@ -11,8 +11,8 @@ class LoggingButton extends React.Component {
 
   render() {
     return (
-      <button onClick={(e) => this.handleClick(e)}>
-        Click me
+       <button onClick={this.handleClick.bind(this, "Goodbye")}>
+        Click me Good bye
       </button>
     );
   }
