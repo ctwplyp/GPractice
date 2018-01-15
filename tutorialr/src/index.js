@@ -2,22 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class LoggingButton extends React.Component {
-  // This syntax ensures `this` is bound within handleClick.
-  // Warning: this is *experimental* syntax.
-  handleClick() {
-    console.log('this is:', this);
+  function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserGreeting />;
   }
+  return <GuestGreeting />;
+	}
+  function UserGreeting(props) {
+  return <h1>Welcome back!</h1>;
+	}
 
-  render() {
-    return (
-       <button onClick={this.handleClick.bind(this, "Goodbye")}>
-        Click me Good bye
-      </button>
-    );
-  }
-}
+	function GuestGreeting(props) {
+  		return <h1>Please sign up.</h1>;
+	}
+
 	ReactDOM.render(
-    	<LoggingButton />,
+    	<Greeting isLoggedIn={true} />,
     	document.getElementById('root')
 	);
