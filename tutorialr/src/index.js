@@ -7,12 +7,16 @@ const numbers = [1, 2, 3, 4, 5];
 //const doubledItems = doubledPlus1.map((doubled) =>
  // <li>{doubled}</li>
 //);
+
+function ListItem(props) {
+	return<li>{props.value}</li>;
+}
+
 function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
-    <li key={number.toString()}>
-    	{number}
-    </li>
+    <ListItem key={number.toString()}
+    	value = {number + 4} />
   );
   return (
     <ul>{listItems}</ul>
