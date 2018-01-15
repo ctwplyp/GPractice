@@ -52,21 +52,17 @@ function LogoutButton(props) {
 
   render() {
     const isLoggedIn = this.state.isLoggedIn;
-
-    let button = null;
-    if (isLoggedIn) {
-      button = <LogoutButton onClick={this.handleLogoutClick} />;
-    } else {
-      button = <LoginButton onClick={this.handleLoginClick} />;
-    }
-
-    return (
+ 	return (	
       <div>
-        <Greeting isLoggedIn={isLoggedIn} />
-        {button}
-      </div>
+    {isLoggedIn ? (
+      <LogoutButton onClick={this.handleLogoutClick} />
+    ) : (
+      <LoginButton onClick={this.handleLoginClick} />
+    )}
+    	The user is <b>{isLoggedIn ? "currently" : 'not'}</b> logged in.
+    </div>
     );
-  }
+}
 }
 	function Mailbox(props) {
 		const unreadMessages = props.unreadMessages;
@@ -82,8 +78,8 @@ function LogoutButton(props) {
   		);
 	}
 
-	const messages= ['React', 'Re: React', 'Re:Re: React'];
+	const messages= ['React', 'Re: React', 'Re:Re: React','Reactsdf'];
 	ReactDOM.render(
-    	<Mailbox unreadMessages={messages} />,
+    	<LoginControl />,
     	document.getElementById('root')
 	);
