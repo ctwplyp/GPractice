@@ -2,30 +2,42 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const numbers = [1, 2, 3, 4, 5];
-//const doubledPlus1 = numbers.map((number) => number * 2+1);
-//const doubledItems = doubledPlus1.map((doubled) =>
- // <li>{doubled}</li>
-//);
+class NameForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {value: ''};
 
-function ListItem(props) {
-	return<li>{props.value}</li>;
-}
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		
+	}
 
-function NumberList(props) {
-  const numbers = props.numbers;
-  return (
-  	<ul>
-  		{ numbers.map((number) =>
-    		<ListItem key={number.toString()}
-    			value = {number + 4} />
-	)}
-	</ul>
-  );
+	handleChange(event) {
+		//only uppercase letters allowed
+		this.setState({value: event.target.value.toUpperCase()});
+	}
+
+	handleSubmit(event) {
+		alert('A name was submitted: ' + this.state.value);
+		event.preventDefault();
+	}
+
+	render() {
+		return (
+			<form onSubmit={this.handleSubmit}>
+				<label>
+					Name:
+					<input type="text" value={this.state.value} onChange={this.handleChange} />
+				</label>
+				<input type="submit" value="Submit" />
+				</form>
+			);
+	}
+
 }
 
 
 ReactDOM.render(
-  <NumberList numbers={numbers} />,
+  <NameForm />,
   document.getElementById('root')
 );
