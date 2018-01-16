@@ -2,43 +2,53 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class FileInput extends React.Component {
+class Reservation extends React.Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(
-      this
-    );
+    this.state = {
+    	isGoing: true,
+    	numberOfGuests:2
+    };
+    this.handleInputChange= this.handleInputChange.bind(this)
   }
-  handleSubmit(event) {
-    event.preventDefault()
-    alert(
-      'Selected file - ${this.fileInput.files[0].name}'
-    );
+  handleInputChange(event) {
+   const target = event.target;
+   const value = target.type === 'checkbox' ? target.checked : target.value;
+   const name = target.name;
+
+   this.setState({
+   	[name]: value
+   });
   }
+
 
   render() {
     return (
-      <form
-        onSubmit={this.handleSubmit}>
-        <label>
-          Upload file:
+      <form>
+      	<label>
+      		Is going:
           <input
-            type="file"
-            ref={input => {
-              this.fileInput = input;
-            }}
+            name="isGoing"
+            type="checkbox"
+            checked={this.state.isGoing}
+            onChange={this.handleInputChange}
           />
         </label>
         <br />
-        <button type="submit">
-          Submit
-        </button>
+        <label>
+        	Number of guests:
+        	<input
+        		name="numberOfGuests"
+        		type="number"
+        		value={this.state.numberOfGuests}
+        		onChange={this.handleInputChange} />
+        </label>
       </form>
     );
   }
 }
 
 ReactDOM.render(
-  <FileInput />,
+  <Reservation />,
   document.getElementById('root')
 );
