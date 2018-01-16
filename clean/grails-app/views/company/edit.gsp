@@ -17,24 +17,17 @@
 		</div>
 		<div id="edit-company" class="content scaffold-edit" role="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${companyInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${companyInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form url="[resource:companyInstance, action:'update']" method="PUT" >
-				<g:hiddenField name="version" value="${companyInstance?.version}" />
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				</fieldset>
+			<g:form controller="Company" action="update">
+				<label>Id</label>
+				<g:textField name="id" value="${company.id}"/><br/>
+				<label>Company Name</label>
+				<g:textField name="name" value="${company.name}"/><br/>
+				<label>Employee Names: </label>
+				<g:each in="${company.persons}" var="person">
+					<g:hiddenField name="persons" value ="${person.name}"/>${person.name} ,
+				</g:each> <br/>
+				<g:actionSubmit value="Update"/>
+				<g:actionSubmit value="Cancel"/>
 			</g:form>
 		</div>
 	</body>

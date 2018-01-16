@@ -26,9 +26,22 @@ class CompanyController {
         def company = Company.get(id)
         [company:company]
     }
-    def edit(){
-        System.out.print(params)
+    def edit(Integer id) {
+        def company = Company.get(id)
+        [company:company]
+    }
+    def update(Company company) {
+        if (company==null){
+            render txt "Unsuccessful Update"
+            return
+        }
+        try {
+            company.save(flush:true)
 
+        } catch(ValidationException e) {
+            render "Unsuccessful Update"
+        }
+        render "Successful Update"
     }
 
 }
