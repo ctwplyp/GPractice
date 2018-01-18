@@ -15,6 +15,8 @@ class ProductRow extends React.Component {
       <tr>
         <td>{name}</td>
         <td>{product.price}</td>
+        <td>{product.stocked}</td>
+        <td>{product.category}</td>
       </tr>
     );
   }
@@ -37,6 +39,8 @@ class ProductTable extends React.Component {
           <tr>
             <th>Name</th>
             <th>Price</th>
+            <th>Stocked</th>
+            <th>Category</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>
@@ -44,8 +48,6 @@ class ProductTable extends React.Component {
     );
   }
 }
-
-
 
 const PRODUCTS = [
   {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
