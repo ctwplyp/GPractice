@@ -1,18 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import {hello} from './stories';
 
 // Correct! This is a component and should be capitalized:
-function Hello(props) {
-  // Correct! This use of <div> is legitimate because div is a valid HTML tag:
-  return <div>Hello {props.toWhat}</div>;
+const components = {
+  HelloMessage: hello
 }
 
-function HelloWorld() {
-  return <Hello toWhat="World" />;
-}
- 
 ReactDOM.render(
-  <HelloWorld/>,
+  <HelloMessage name="Taylor" />,
   document.getElementById('root')
 );
