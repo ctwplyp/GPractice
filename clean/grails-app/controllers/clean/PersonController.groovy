@@ -9,12 +9,13 @@ class PersonController {
        def persons = Person.list()
         [persons:persons]
     }
-    def save() {
+    def save(String name, String email, int companyId) {
         System.out.println(params)
-        new Person(name:name,email:email, company:companyId).save(flush:true)
-        System.out.println()
-       // def company1 = Company.load(1)
         try {
+        Company company=Company.get(companyId)
+        company.addToPersons(new Person(name:name,email:email)).save(flush:true)
+        System.out.println()
+
          //   company1.addToPersons(new Person(name:"Sean3",email:"sean3@gmail.com")).save(flush:true)
         } catch(ValidationException e) {
             render "Unsuccessful Save"
