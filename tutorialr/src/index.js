@@ -13,17 +13,18 @@ function NumberDescriber(props) {
   return <div>{props.number} is an {description} number </div>
 }
 
-function AddNumbers() {
-  const props ={number1:{number1} , number2:{number2}}
-  return <NumberAdder {...props} />;
-}
 
-function NumberAdder() {
-  const answer = {number1}+{number2
-  return <NumberDescriber answer />
+function TwoNumber(props1){
+const props = {number: props1.number2}
+  return <div> 
+          <NumberDescriber number={props1.number1} />
+           <NumberDescriber number={props1.number2} />
+           <NumberDescriber props />
+           </div>
+
 }
 
 ReactDOM.render(
-  <NumberDescriber number1={1} number2={2}/>,
+  <TwoNumber number1={1} number2={2}/>,
   document.getElementById('root')
 );
