@@ -3,28 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 
-function NumberDescriber(props) {
-  let description;
-  if (props.number % 2 == 0) {
-    description =<strong>even</strong>
-  }else {
-    description = <i>odd</i>;
-  }
-  return <div>{props.number} is an {description} number </div>
+const Button = props => {
+  const { kind, ...other } = props;
+  const className = kind === "primary" ? "PrimaryButton" : "SecondaryButton"
+  return <button className={className} {...other  } />
 }
 
-
-function TwoNumber(props1){
-const props = {number: props1.number2}
-  return <div> 
-          <NumberDescriber number={props1.number1} />
-           <NumberDescriber number={props1.number2} />
-           <NumberDescriber {...props} />
-           </div>
-
+const App = () => {
+  return  (
+    <div>
+      <Button kind="primary" onClick={() => console.log("clicked!")}>
+        Hello World!
+      </Button>
+    </div>
+  ) 
 }
 
 ReactDOM.render(
-  <TwoNumber number1={1} number2={2}/>,
+  <App kind="yello" args1="yellow" />,
   document.getElementById('root')
 );
