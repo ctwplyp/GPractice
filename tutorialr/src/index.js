@@ -20,6 +20,6 @@ const App = () => {
 }
 
 ReactDOM.render(
-  <App kind="yello" args1="yellow" />,
+  <App kind="yello'" args1="yellow" />,
   document.getElementById('root')
 );
