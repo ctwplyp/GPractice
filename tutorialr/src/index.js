@@ -19,7 +19,7 @@ const props = {number: props1.number2}
   return <div> 
           <NumberDescriber number={props1.number1} />
            <NumberDescriber number={props1.number2} />
-           <NumberDescriber props />
+           <NumberDescriber {...props} />
            </div>
 
 }
