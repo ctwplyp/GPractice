@@ -18,16 +18,20 @@ function TwoNumber(props1){
 const props = {number: props1.number2}
   return <div> 
           <NumberDescriber number={props1.number1} />
-          <div>{showHeader && <Header />}</div>
+          <div>{showHeader && <Header messages={"{props1.number1}"}/>}</div>
            <NumberDescriber number={props1.number2} />
            <NumberDescriber {...props} />
            <NumberDescriber></NumberDescriber>
            </div>
 }
 
-function Header(){
-  return <div>HelloWorld</div>
+function Header(props){
+  return <div>{props.messages && "true" 
+              //  <MessageList messages={props.messages}/>
+              }
+         </div>
 }
+
 
 function Repeat(props) {
   let items =[];
