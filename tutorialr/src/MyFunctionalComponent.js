@@ -2,22 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function CustomTextInput(props) {
-let textInput= null
+class CustomTextInput extends React.Component {
+  constructor(props) {
+    super(props)
+      this.focusTextInput = this.focusTextInput.bind(this)
+  }
+  focusTextInput() {
+    this.textInput.focus()
+  }
 
-function handleClick() {
-  textInput.focus()
-}
+  render(){
     return (
       <div>
-        <input type="text" ref ={(input) => {textInput = input}}/>
+        <input type="text" ref ={(input) => {this.textInput = input}}/>
       <input
         type="button"
           value="focus the text Input"
-          onClick={handleClick}
+          onClick={this.focusTextInput}
           />
           </div>
     )
+  }
 }
 
 class AutoFocusTextInput extends React.Component {
@@ -35,16 +40,7 @@ function MyFunctionalComponent() {
   return <input/>
 }
 
-class Parent extends React.Component {
-  render() {
-    return (
-    <MyFunctionalComponent
-      ref={(input) => {this.textInput = input; }} />
-    )
-  }
-}
-
 ReactDOM.render(
-  <CustomTextInput />,
+  <AutoFocusTextInput />,
   document.getElementById('root')
 );
