@@ -1,28 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import PropTypes from 'prop-types'
 
 
 
-function Repeat(props) {
-  let items =[];
-  for (let i =0; i<props.numTimes; i++) {
-    items.push(props.children(i));
+class Greeting extends React.Component {
+  render() {
+      return (
+        <h1>Hello, {this.props.name}</h1>
+    )
   }
-  return <div>{items}</div>;
 }
 
-function ListOfTenThings() {
-  var myVariable
-  return (
-    <Repeat numTimes={10}>
-      {(index) => <div key={index}><div>
-      </div>My JavaScript {index} variable is {String(myVariable)}</div>}
-      </Repeat>
-      )
+Greeting.propTypes = {
+    name:PropTypes.string
 }
 
 ReactDOM.render(
-  <ListOfTenThings />,
+  <Greeting name="Sean"/>,
   document.getElementById('root')
 );
