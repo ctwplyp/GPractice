@@ -50,6 +50,6 @@ MyComponent.propTypes = {
 
 
 ReactDOM.render(
-  <GreetingWithDefault />,
+  <GreetingWithoutDefault />,
   document.getElementById('root')
 );
