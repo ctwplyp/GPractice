@@ -7,13 +7,18 @@ const Link = ({ active, children, onClick }) => {
 	}
 
 	return (
-			<a href="" onClick={e => { e.preventDefault() onClick()}}>
-			{children}
-			</a>
-			)
+    <a
+      href=""
+      onClick={e => {
+        e.preventDefault()
+        onClick()
+      }}
+    >
+      {children}
+    </a>
+  )
 }
-
-link.propTypes = {
+Link.propTypes = {
 	active: PropTypes.bool.isRequired,
 	children: PropTypes.node.isRequired,
 	onClick: PropTypes.func.isRequired
