@@ -6,7 +6,7 @@ const Footer = () => (
 	<p>
 		Show:
 		{' '}
-		<FilterLink filter="SHOW ALL">
+		<FilterLink filter="SHOW_ALL">
 			ALL
 		</FilterLink>
 		{', '}
