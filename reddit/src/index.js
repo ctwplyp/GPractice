@@ -1,62 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+import { createStore, applyMiddleware } from 'redux'
+import { selectSubreddit, fetchPostsIfNeeded } from './actions'
+import rootReducer from './reducers'
 
-import { Provider } from 'react-redux'
-import './index.css';
-import{createStore} from 'redux'
+const loggerMiddleware = createLogger()
 
-class ProductRow extends React.Component {
-  render() {
-    const product = this.props.product;
-    const name = 
-      <span>
-        {product.name}
-      </span>;
+const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    thunkMiddleware, // lets us dispatch() functions
+    loggerMiddleware // neat middleware that logs actions
+  )
+)
 
-    return (
-      <tr>
-        <td>{name}</td>
-        <td>{product.price}</td>
-      </tr>
-    );
-  }
-}
-class ProductTable extends React.Component {
-  render() {
-    const rows = [];
-    
-    this.props.products.forEach((product) => {
-      rows.push(
-        <ProductRow
-          product={product}
-          key={product.name} />
-      );
-    });
-
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
-    );
-  }
-}
-
-const PRODUCTS = [
-  {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-  {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-  {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-  {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-  {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-  {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
-];
- 
-ReactDOM.render(
-  <ProductTable products={PRODUCTS} />,
-  document.getElementById('root')
-);
+store.dispatch(selectSubreddit('reactjs'))
+store
+  .dispatch(fetchPostsIfNeeded('reactjs'))
+  .then(() => console.log(store.getState()))
