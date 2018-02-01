@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "cross-fetch": "^1.1.1",
     "fetch": "^1.1.0",
     "raven-for-redux": "^1.2.0",
