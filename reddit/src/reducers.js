@@ -24,10 +24,11 @@ function posts(
   action
 ) {
   switch (action.type) {
-    case INVALIDATE_SUBREDDIT:
-      return Object.assign({}, state, {
+      case INVALIDATE_SUBREDDIT:
+      return {
+          ...state,
         didInvalidate: true
-      })
+      }
     case REQUEST_POSTS:
       return Object.assign({}, state, {
         isFetching: true,
