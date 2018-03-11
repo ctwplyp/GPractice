@@ -1,2 +1,2 @@
 # GPractice
-Grails Practcing
+Grails, React and Java Coding
