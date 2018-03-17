@@ -17,8 +17,8 @@ public class Main {
         return sentence;
     }
 
-    public static void main(String[] args) {
-    /*    Student[] students = new Student[2];
+    /*public static void main(String[] args) {
+        Student[] students = new Student[2];
         Student student1 = new Student("Sean", 1);
         Student student2 = new Student("Mandy", 2);
         students[0]=student1;
@@ -35,7 +35,7 @@ public class Main {
         ArrayList<String> mString =m.merge(string, string2);
         for(String words:mString){
             System.out.print(words + ",");
-        }*/
+        }
         Node n = new Node(1);
         Node root = new Node(0);
         root.appendToTail(3);
@@ -45,5 +45,5 @@ public class Main {
             currentNode= currentNode.next;
         }
 
-    }
+    }*/
 }
