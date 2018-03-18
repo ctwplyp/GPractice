@@ -13,7 +13,7 @@ public class Solution  {
 
 
     }
-    private static void printRotatedReg(int n, int d, int[] a) {
+   /* private static void printRotatedReg(int n, int d, int[] a) {
         int[] b = new int[n];
         for (int i=0; i<n; i++){
             if (d+i>(n-1)){
@@ -23,7 +23,8 @@ public class Solution  {
         for (int j=0;j<n;j++){
             System.out.print(b[j] + " ");
         }
-    }
+    }*/
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
@@ -32,7 +33,13 @@ public class Solution  {
         for(int a_i=0; a_i < n; a_i++){
             a[a_i] = in.nextInt();
         }
-        printRotatedFunc(n, d, a);
+        RotateContext rc = new RotateContext();
+        rc.setRotateStrategy("Func");
+        rc.rotate(n, d, a);
+            //   RotateStrategy rotatedStrategy = new RotatedFuncStrategy();
+      //  rotatedStrategy.rotateNumbers(n,d,a);
+
+       // printRotatedFunc(n, d, a);
 
     }
 }

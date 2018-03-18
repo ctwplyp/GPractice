@@ -1,6 +1,6 @@
 
 
-public class RotatedNormStratgey implements RotateStrategy {
+public class RotatedNormStrategy implements RotateStrategy {
 
     @Override
     public void rotateNumbers(int n, int d, int[] a) {
