@@ -16,7 +16,14 @@ public class Solution {
 
 
     }
-
+    public static boolean checkArray(int[] arr, int n){
+        return gcd(arr[0],arr[1])==gcd(arr[2],arr[3]);
+    }
+    public static int gcd(int a, int b){
+        if (b==0)
+            return a;
+        return gcd(b, a%b);
+    }
     /* private static void printRotatedReg(int n, int d, int[] a) {
          int[] b = new int[n];
          for (int i=0; i<n; i++){
@@ -84,6 +91,55 @@ public class Solution {
 
     }
 
+        static int minimumAbsoluteSortDifference(int n, int[] arr) {
+            Arrays.sort(arr);
+            int minDiff=Integer.MAX_VALUE;
+            for (int i=0;i<n-1;i++) {
+                if (minDiff > Math.abs(arr[i] - arr[i + 1])) {
+                    minDiff = Math.abs(arr[i] - arr[i + 1]);
+                }
+            }
+            return minDiff;
+        }
+
+        public static void main(String[] args) {
+            Scanner in = new Scanner(System.in);
+            int n = in.nextInt();
+            int[] arr = new int[n];
+            for (int arr_i = 0; arr_i < n; arr_i++) {
+                arr[arr_i] = in.nextInt();
+            }
+            int result = minimumAbsoluteSortDifference(n, arr);
+            System.out.println(result);
+            in.close();
+        }
+/*
+ public static boolean checkArray(int[] arr, int n){
+        return gcd(arr[0],arr[1])==gcd(arr[2],arr[3]);
+    }
+    public static int gcd(int a, int b){
+        if (b==0)
+            return a;
+        return gcd(b, a%b);
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[][] arr = new int[n][4];
+
+        for (int row = 0; row < arr.length; row++) {
+            for (int column = 0; column < arr[row].length; column++) {
+                 arr[row][column] = in.nextInt();
+            }
+        }
+        //Solution s= new Solution();
+       for(int[] a:arr){
+        if (checkArray(a, n))
+            System.out.println("YES");
+        else System.out.println("NO");
+        }
+ */
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
