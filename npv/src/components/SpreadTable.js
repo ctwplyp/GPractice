@@ -7,7 +7,7 @@ export default class SpreadTable extends React.Component {
     super(props)
 
     this.state = {
-      data: {},
+      data: {x :1, y: 2},
     }
   }
 
