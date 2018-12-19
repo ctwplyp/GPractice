@@ -38,4 +38,10 @@ public class Student {
         ", courses=" + courses +
         '}';
   }
+
+  // captured variable "threshold" must be final, or effectively final
+  public static StudentCriterion getSmartCriterion(double threshold) {
+//    threshold += 1;
+    return s -> s.gpa > threshold;
+  }
 }

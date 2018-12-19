@@ -1,9 +1,20 @@
 package school;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+interface SillyParent {
+  boolean daft(Student s);
+}
+
+@FunctionalInterface
+interface Silly extends SillyParent {
+//  boolean strange(Student s);
+  default void oddity() {}
+}
 
 interface StudentCriterion {
   boolean test(Student s);
@@ -115,7 +126,27 @@ public class MySchool {
 
     System.out.println("Not smart students, by lambda");
     showAll(getStudentsByCriterion(roster,
-        (Student s) -> { return s.getGpa() < 3.0;} ));
+//        /*(*//*Student */s/*)*/ -> { return s.getGpa() < 3.0;} ));
+//        s -> { return s.getGpa() < 3.0;} ));
+        s -> s.getGpa() < 3.0 ));
 
+    showAll(getStudentsByCriterion(roster, s -> s.getGpa() < 3.0));
+
+    // NO CONTEXT!!!
+//    boolean b = (s -> s.getGpa() < 3.0).test(Student.of("Frederick", 3.9));
+
+    StudentCriterion sc;
+    sc = s -> s.getGpa() < 3.0;
+
+    System.out.println("Class of sc is " + sc.getClass().getName());
+    Method [] methods = sc.getClass().getMethods();
+    for (Method m : methods) {
+      System.out.println("> " + m);
+    }
+    boolean b = ((/*StudentCriterion*/Silly)(s -> s.getGpa() < 3.0))
+        .daft(Student.of("Frederick", 3.9));
+
+    System.out.println("Smart, by factory");
+    showAll(getStudentsByCriterion(roster, Student.getSmartCriterion(2.5)));
   }
 }
