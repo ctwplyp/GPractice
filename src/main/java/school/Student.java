@@ -3,6 +3,7 @@ package school;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Student {
   private String name;
@@ -40,7 +41,8 @@ public class Student {
   }
 
   // captured variable "threshold" must be final, or effectively final
-  public static StudentCriterion getSmartCriterion(double threshold) {
+//  public static StudentCriterion getSmartCriterion(double threshold) {
+  public static Predicate<Student> getSmartCriterion(double threshold) {
 //    threshold += 1;
     return s -> s.gpa > threshold;
   }

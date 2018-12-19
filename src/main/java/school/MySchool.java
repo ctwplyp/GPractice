@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 interface SillyParent {
   boolean daft(Student s);
@@ -20,14 +21,16 @@ interface StudentCriterion {
   boolean test(Student s);
 }
 
-class SmartStudentCriterion implements StudentCriterion {
+//class SmartStudentCriterion implements StudentCriterion {
+class SmartStudentCriterion implements Predicate<Student> {
   @Override
   public boolean test(Student s) {
     return s.getGpa() > 3.0;
   }
 }
 
-class EnthusiasticStudentCriterion implements StudentCriterion {
+//class EnthusiasticStudentCriterion implements StudentCriterion {
+class EnthusiasticStudentCriterion implements Predicate<Student> {
   private int threshold;
   public EnthusiasticStudentCriterion(int threshold) {
     this.threshold = threshold;
@@ -66,7 +69,7 @@ public class MySchool {
   }
 
   public static List<Student> getStudentsByCriterion(
-      Iterable<Student> ls, StudentCriterion crit) {
+      Iterable<Student> ls, /*StudentCriterion*/ Predicate<Student> crit) {
     List<Student> out = new ArrayList<>();
     for(Student s : ls) {
       if (crit.test(s)) {
@@ -107,7 +110,8 @@ public class MySchool {
 
     System.out.println("Not smart students, by anonymous class");
     showAll(getStudentsByCriterion(roster, new
-    /*class SmartStudentCriterion implements*/ StudentCriterion() {
+//    /*class SmartStudentCriterion implements*/ StudentCriterion() {
+    /*class SmartStudentCriterion implements*/ Predicate<Student>() {
       @Override
       public boolean test(Student s) {
         return s.getGpa() < 3.0;
