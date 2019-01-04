@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 interface SillyParent {
@@ -30,15 +31,11 @@ class SmartStudentCriterion implements Predicate<Student> {
 }
 
 //class EnthusiasticStudentCriterion implements StudentCriterion {
-class EnthusiasticStudentCriterion implements Predicate<Student> {
-  private int threshold;
-  public EnthusiasticStudentCriterion(int threshold) {
-    this.threshold = threshold;
-  }
+class EnthusiasticStudentCriterion<S,D> implements BiPredicate<S, D> {
 
   @Override
-  public boolean test(Student s) {
-    return s.getCourses().size() > threshold;
+  public boolean test(S s, D d) {
+    return ((Student)s).getCourses().size() > (Double)d;
   }
 }
 
@@ -104,7 +101,7 @@ public class MySchool {
     System.out.println("Smart by criterion:");
     showAll(getStudentsByCriterion(roster, new SmartStudentCriterion()));
     System.out.println("Enthusiastic by criterion:");
-    showAll(getStudentsByCriterion(roster, new EnthusiasticStudentCriterion(2)));
+    showAll(getStudentsByCriterion(roster, new EnthusiasticStudentCriterion(, 2)));
     System.out.println("Seriously enthusiastic by criterion:");
     showAll(getStudentsByCriterion(roster, new EnthusiasticStudentCriterion(3)));
 
